@@ -1,4 +1,5 @@
 if getgenv().HubEnabled then
+Notification(1, "Executed!", "Plase rejoin to execute again❗", 10)
     return
 end
 getgenv().HubEnabled = true
