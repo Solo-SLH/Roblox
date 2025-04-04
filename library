@@ -1,6 +1,5 @@
 if getgenv().HubEnabled then
-Notification(1, "Executed!", "Plase rejoin to execute again❗", 10)
-    return
+    Notification(1, "Executed!", "Warning❗ you are dupe execute the script", 10)
 end
 getgenv().HubEnabled = true
 library = {flags={},items={}};
@@ -2732,14 +2731,14 @@ library.CreateWindow = function(self, name, hidebutton)
 				dropdown.MainBack = Instance.new("Frame", sector.Items);
 				dropdown.MainBack.Name = "backlabel";
 				dropdown.MainBack.ZIndex = 7;
-				dropdown.MainBack.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 12, 34);
+				dropdown.MainBack.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 12, 24);
 				dropdown.MainBack.BorderSizePixel = 0;
 				dropdown.MainBack.BackgroundTransparency = 1;
 				dropdown.Label = Instance.new("TextLabel", dropdown.MainBack);
 				dropdown.Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 				dropdown.Label.BackgroundTransparency = 1;
 				dropdown.Label.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 12, 10);
-				dropdown.Label.Position = UDim2.fromOffset(0, 0);
+				dropdown.Label.Position = UDim2.fromOffset(0, -4);
 				dropdown.Label.Font = window.theme.font;
 				dropdown.Label.Text = dropdown.text;
 				dropdown.Label.ZIndex = 4;
@@ -2756,7 +2755,7 @@ library.CreateWindow = function(self, name, hidebutton)
 				dropdown.Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 				dropdown.Main.BorderSizePixel = 0;
 				dropdown.Main.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 12, 16);
-				dropdown.Main.Position = UDim2.fromOffset(0, 17);
+				dropdown.Main.Position = UDim2.fromOffset(0, 12);
 				dropdown.Main.ZIndex = 5;
 				dropdown.Main.AutoButtonColor = false;
 				dropdown.Main.Font = window.theme.font;
@@ -2773,10 +2772,10 @@ library.CreateWindow = function(self, name, hidebutton)
 				dropdown.SelectedLabel = Instance.new("TextLabel", dropdown.Main);
 				dropdown.SelectedLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 				dropdown.SelectedLabel.BackgroundTransparency = 1;
-				dropdown.SelectedLabel.Position = UDim2.fromOffset(5, 2);
+				dropdown.SelectedLabel.Position = UDim2.fromOffset(5, 0);
 				dropdown.SelectedLabel.Size = UDim2.fromOffset(130, 13);
 				dropdown.SelectedLabel.Font = window.theme.font;
-				dropdown.SelectedLabel.Text = dropdown.text;
+				dropdown.SelectedLabel.Text = "";
 				dropdown.SelectedLabel.ZIndex = 5;
 				dropdown.SelectedLabel.TextColor3 = Color3.fromRGB(255, 255, 255);
 				dropdown.SelectedLabel.TextSize = 15;
@@ -2839,6 +2838,7 @@ library.CreateWindow = function(self, name, hidebutton)
 				dropdown.ListLayout = Instance.new("UIListLayout", dropdown.ItemsFrame);
 				dropdown.ListLayout.FillDirection = Enum.FillDirection.Vertical;
 				dropdown.ListLayout.SortOrder = Enum.SortOrder.LayoutOrder;
+                dropdown.ListLayout.Padding = UDim.new(0, 0);
 				dropdown.ListPadding = Instance.new("UIPadding", dropdown.ItemsFrame);
 				dropdown.ListPadding.PaddingTop = UDim.new(0, 2);
 				dropdown.ListPadding.PaddingBottom = UDim.new(0, 2);
