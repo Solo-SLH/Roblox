@@ -112,11 +112,10 @@ library.ConfigSystem = function(self, name)
 	end
 	if not isfile(configSystem.configFolder .. "/" .. name .. ".txt") then
 		writefile(configSystem.configFolder .. "/" .. name .. ".txt", "[]");
-	end
-	configSystem.Load = function(self)
+	end	configSystem.Load = function(self)
 		local Success = pcall(readfile, configSystem.configFolder .. "/" .. name .. ".txt");
 		if Success then
-			pcall(function()
+			spawn(function()
 				local ReadConfig = httpservice:JSONDecode(readfile(configSystem.configFolder .. "/" .. name .. ".txt"));
 				local NewConfig = {};
 				for i, v in pairs(ReadConfig) do
@@ -137,7 +136,7 @@ library.ConfigSystem = function(self, name)
 					for i2, v2 in pairs(library.items) do
 						if ((i ~= nil) and (i ~= "") and (i ~= "Configs_Name") and (i ~= "Configs") and (v2.flag ~= nil)) then
 							if (v2.flag == i) then
-								pcall(function()
+								spawn(function()
 									v2:Set(v);
 									print(v2.flag, v);
 								end);
