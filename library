@@ -1202,7 +1202,7 @@ library.CreateWindow = function(self, name, hidebutton)
 						Item.TextXAlignment = Enum.TextXAlignment.Left;
 						Item.TextStrokeTransparency = 1;
 						dropdown.ItemsFrame.CanvasSize = dropdown.ItemsFrame.CanvasSize + UDim2.fromOffset(0, Item.AbsoluteSize.Y);
-						Item.MouseButton1Up:Connect(function()
+						Item.MouseButton1Down:Connect(function()
 							if dropdown.multichoice then
 								if dropdown:isSelected(v) then
 									for i2, v2 in pairs(dropdown.values) do
@@ -1216,15 +1216,6 @@ library.CreateWindow = function(self, name, hidebutton)
 									dropdown:Set(dropdown.values);
 								end
 								return;
-							else
-								dropdown.Nav.Rotation = 90;
-								dropdown.ItemsFrame.Visible = false;
-								dropdown.ItemsFrame.Active = false;
-								dropdown.OutlineItems.Visible = false;
-								dropdown.BlackOutlineItems.Visible = false;
-								dropdown.BlackOutline2Items.Visible = false;
-								dropdown.IgnoreBackButtons.Visible = false;
-								dropdown.IgnoreBackButtons.Active = false;
 							end
 							dropdown:Set(v);
 							return;
