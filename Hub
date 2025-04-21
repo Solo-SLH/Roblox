@@ -1,0 +1,14 @@
+repeat wait() until game:IsLoaded() and pcall(function() local _ = game.HttpGet end);
+if getgenv().AlreadyExecuted then
+	return
+end
+getgenv().AlreadyExecuted = true
+task.spawn(function()
+	local queue_on_teleport = (syn and syn.queue_on_teleport) or queue_on_teleport or queueonteleport
+	if queue_on_teleport then
+		pcall(function()
+			queue_on_teleport('loadstring(game:HttpGet"https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Hub")()')
+		end)
+	end
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Map"))()
