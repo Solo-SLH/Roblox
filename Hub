@@ -1,5 +1,6 @@
 repeat wait() until game:IsLoaded() and pcall(function() local _ = game.HttpGet end);
 if getgenv().AlreadyExecuted then
+	print("AlreadyExecuted")
 	return
 end
 getgenv().AlreadyExecuted = true
@@ -12,3 +13,4 @@ task.spawn(function()
 	end
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Map"))()
+print("Executed")
