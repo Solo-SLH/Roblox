@@ -1,0 +1,6 @@
+repeat wait() until game:IsLoaded() and pcall(function() local _ = game.HttpGet end);
+if game.CreatorId == 15009415 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/ARX"))()
+elseif game.CreatorId == 9122948 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/AWTD"))()
+end
