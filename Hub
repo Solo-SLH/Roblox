@@ -1,6 +1,5 @@
 repeat wait() until game:IsLoaded() and pcall(function() local _ = game.HttpGet end);
 if getgenv().AlreadyExecuted then
-	print("AlreadyExecuted")
 	return
 end
 getgenv().AlreadyExecuted = true
@@ -9,11 +8,7 @@ task.spawn(function()
 	if queue_on_teleport then
 		pcall(function()
 			queue_on_teleport('loadstring(game:HttpGet"https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Hub")()')
-			queue_on_teleport('print("TPEXE")')
 		end)
 	end
 end)
-task.spawn(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Map"))()
-end)
-print("Executed")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Map"))()
