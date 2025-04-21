@@ -9,7 +9,7 @@ task.spawn(function()
 	if queue_on_teleport then
 		pcall(function()
 			queue_on_teleport('loadstring(game:HttpGet"https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/Hub")()')
-			print("TPEXE")
+			queue_on_teleport('print("TPEXE")')
 		end)
 	end
 end)
