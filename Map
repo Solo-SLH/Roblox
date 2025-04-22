@@ -3,4 +3,6 @@ if game.CreatorId == 15009415 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/ARX"))()
 elseif game.CreatorId == 9122948 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/AWTD"))()
+elseif game.CreatorId == 12229756 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Solo-SLH/Roblox/refs/heads/main/ALS"))()
 end
