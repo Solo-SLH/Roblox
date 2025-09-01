@@ -1,0 +1,104 @@
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+function gettrash()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("Trash Can") then
+        for i,v in pairs(workspace.Map.Trash:GetChildren()) do
+            if v:GetAttribute("Broken") == false then
+                if (v.WorldPivot.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 7 then
+                    game.Players.LocalPlayer.Character.PrimaryPart.CFrame = v.WorldPivot * CFrame.new(0,0,2)
+                    break
+                else
+                    local args = {
+                        {
+                            Goal = "LeftClick",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                    local args = {
+                        {
+                            Goal = "LeftClickRelease",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                end
+            end
+        end
+    end
+end
+local function getClosest()
+    local dist, thing = math.huge
+        for i, v in next, workspace.Live:GetChildren() do
+            if v.Name ~= game.Players.LocalPlayer.Name then
+                local mag = (Vector3.new(68.2753372, 442.137909, -333.601166) - v.HumanoidRootPart.Position).magnitude
+                if mag < dist then
+                    dist = mag 
+                    thing = v
+                end
+            end
+        end
+    return thing
+end
+_G.E = true
+spawn(function()
+    while _G.E and wait() do
+        pcall(function()
+            if getClosest().Humanoid.Health > 20 then
+                if not game.Players.LocalPlayer.Character:FindFirstChild("Trash Can") then
+                        if game.Players.LocalPlayer.Character:FindFirstChild("Blitz Shot") then
+                            game.Players.LocalPlayer.Character:FindFirstChild("Blitz Shot").Parent = game:GetService("Players").LocalPlayer.Backpack
+                        end
+                    gettrash()
+                    wait(.5)
+                else
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Blitz Shot") then
+                        game.Players.LocalPlayer.Character:FindFirstChild("Blitz Shot").Parent = game:GetService("Players").LocalPlayer.Backpack
+                    end
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getClosest().PrimaryPart.CFrame * CFrame.new(0,0,10)
+                    wait(1)
+                    local args = {
+                        {
+                            Goal = "LeftClick",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                    local args = {
+                        {
+                            Goal = "LeftClickRelease",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                end
+            else
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getClosest().PrimaryPart.CFrame * CFrame.new(0,0,10)
+                if not game.Players.LocalPlayer.Character:FindFirstChild("Blitz Shot") then
+                    game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Blitz Shot").Parent = game.Players.LocalPlayer.Character
+                else
+                    local args = {
+                        {
+                            Goal = "LeftClick",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                    wait(3)
+                    local args = {
+                        {
+                            Goal = "LeftClickRelease",
+                            Mobile = true
+                        }
+                    }
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Communicate"):FireServer(unpack(args))
+                end
+            end
+        end)
+    end
+end)
+while wait(1) do
+    game.Players.LocalPlayer.Character.Communicate:FireServer({["Goal"] = "Emote Spin"})
+end
